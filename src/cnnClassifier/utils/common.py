@@ -1,14 +1,16 @@
-import os 
-from box.exceptions import BoxValueError 
-import yaml 
-from CNN_classifier import logger 
-import json  
-import joblib  
-from ensure import ensure_annotations 
+import os
+from box.exceptions import BoxValueError  # pylint: disable=no-name-in-module
+import yaml
+from cnnClassifier import logger
+import json
+import joblib
+from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
 import base64
+
+
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -34,6 +36,8 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     except Exception as e:
         raise e
     
+
+
 @ensure_annotations
 def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
@@ -46,6 +50,7 @@ def create_directories(path_to_directories: list, verbose=True):
         os.makedirs(path, exist_ok=True)
         if verbose:
             logger.info(f"created directory at: {path}")
+
 
 @ensure_annotations
 def save_json(path: Path, data: dict):
