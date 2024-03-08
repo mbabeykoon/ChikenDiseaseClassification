@@ -83,7 +83,7 @@ This guide outlines the process for deploying a Docker-based application on AWS 
 #### ECR Repository Creation
 
 1. Go to the Amazon ECR service and create a new repository.
-   - Note down the URI (e.g., `566373416292.dkr.ecr.us-east-1.amazonaws.com/chicken`).
+   - Note down the URI (e.g., `381492009513.dkr.ecr.us-east-2.amazonaws.com/chicken`).
 
 #### EC2 Instance Setup
 
