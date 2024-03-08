@@ -99,4 +99,42 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker ubuntu
 newgrp docker
+```
+# Configuring EC2 as a Self-Hosted Runner for GitHub Actions
+
+## Configure EC2 as Self-Hosted Runner
+
+To enhance your CI/CD pipeline, you can use your AWS EC2 instance as a self-hosted runner. This allows for more control over the environment where your GitHub Actions workflows run.
+
+### Steps:
+
+1. Navigate to your GitHub repository's Settings.
+2. Go to Actions > Runners.
+3. Click on "New self-hosted runner".
+4. Select the operating system of your EC2 instance.
+5. Follow the provided instructions to download, configure, and start the runner on your EC2 instance.
+
+    These steps typically involve executing shell commands on your EC2 instance to download the runner application, configure it with your repository, and start the runner service.
+
+##  Setting Up GitHub Secrets
+
+To securely store and use sensitive information in your GitHub Actions workflows, you should use GitHub Secrets.
+
+### Required Secrets:
+
+You'll need to set up the following secrets in your GitHub repository:
+
+- `AWS_ACCESS_KEY_ID`: Your AWS IAM user's access key ID.
+- `AWS_SECRET_ACCESS_KEY`: Your AWS IAM user's secret access key.
+- `AWS_REGION`: The AWS region where your resources are located (e.g., `us-east-1`).
+- `AWS_ECR_LOGIN_URI`: The login URI for your AWS ECR repository (e.g., `566373416292.dkr.ecr.ap-south-1.amazonaws.com`).
+- `ECR_REPOSITORY_NAME`: The name of your ECR repository where the Docker images will be stored (e.g., `simple-app`).
+
+### How to Set Secrets:
+
+1. In your GitHub repository, navigate to Settings.
+2. Click on Secrets in the left sidebar, then choose Actions.
+3. Click on "New repository secret" to add each of the above secrets.
+
+Ensure these secrets match the credentials and resource names you've set up in AWS. These secrets will be used in your GitHub Actions workflows to interact with AWS services securely.
 
